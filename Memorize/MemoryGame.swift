@@ -8,7 +8,7 @@
 import Foundation
 
 struct MemoryGame<CardContent> {
-    var cards: Array<Card>
+    private(set) var cards: Array<Card>
     
     func choose(card: Card) {
         print("card choosen: \(card)")
@@ -32,23 +32,4 @@ struct MemoryGame<CardContent> {
     }
     
     
-}
-
-
-
-
-
-func multiply(operand:Int, by:Int) -> Int {
-    var a = Array<Int>()
-    a.append(10)
-    var operation: (Double) -> Double
-    operation = Square
-    _ = operation(4)
-    
-    
-    return operand * by
-}
-
-func Square(operand:Double) -> Double {
-    return operand * operand
 }
