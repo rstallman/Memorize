@@ -4,7 +4,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let viewModel: EmojiMemoryGame
+    @ObservedObject var viewModel: EmojiMemoryGame
     
     var body: some View {
         
@@ -13,7 +13,9 @@ struct ContentView: View {
                 ForEach(viewModel.cards) {card in
                     CardView(card: card)
                         .aspectRatio(2/3, contentMode: .fit)
-                        .onTapGesture { viewModel.choose(card: card) }
+                        .onTapGesture {
+                            viewModel.choose(card)
+                        }
                 }
             }
         }
@@ -34,8 +36,10 @@ struct CardView: View {
             let shape = RoundedRectangle(cornerRadius: 20.0)
             if card.isFaceup {
                 shape.fill(Color.white)
-                shape.stroke(lineWidth: 3)
+                shape.strokeBorder(lineWidth: 3)
                 Text(card.content)
+            } else if card.isMatched {
+                shape.opacity(0)
             } else {
                 shape.fill()
             }

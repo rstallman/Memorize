@@ -7,17 +7,41 @@
 
 import Foundation
 
-struct MemoryGame<CardContent> {
+struct MemoryGame<CardContent>  where CardContent: Equatable{
     private(set) var cards: Array<Card>
     
-    func choose(card: Card) {
-        print("card choosen: \(card)")
+    
+    private var indexOfTheOneAndOnlyFaceupCard: Int?
+    
+    
+    mutating func choose(_ card: Card) {
+        
+        if let chosenIndex = cards.firstIndex(where: { $0.id == card.id}),
+           !cards[chosenIndex].isFaceup,
+           !cards[chosenIndex].isMatched
+        {
+            if let potentialMatchIndex = indexOfTheOneAndOnlyFaceupCard {
+                if cards[chosenIndex].content == cards[potentialMatchIndex].content {
+                    cards[chosenIndex].isMatched = true
+                    cards[potentialMatchIndex].isMatched = true
+                }
+                indexOfTheOneAndOnlyFaceupCard = nil
+            } else {
+                for index in cards.indices {
+                    cards[index].isFaceup = false
+                }
+                indexOfTheOneAndOnlyFaceupCard = chosenIndex
+            }
+            
+            cards[chosenIndex].isFaceup.toggle()
+        }
+        print("card choosen: \(cards)")
     }
     
     struct Card: Identifiable{
         var id: Int
         
-        var isFaceup: Bool = true
+        var isFaceup: Bool = false
         var isMatched: Bool = false
         var content: CardContent
     }
