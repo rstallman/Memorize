@@ -10,9 +10,11 @@ import Foundation
 struct MemoryGame<CardContent>  where CardContent: Equatable{
     private(set) var cards: Array<Card>
     
-    
-    private var indexOfTheOneAndOnlyFaceupCard: Int?
-    
+    private var indexOfTheOneAndOnlyFaceupCard: Int? {
+        get { cards.indices.filter({cards[$0].isFaceup}).oneAndOnly }
+        set { cards.indices.forEach {cards[$0].isFaceup = ($0 == newValue)}}
+        
+    }
     
     mutating func choose(_ card: Card) {
         
@@ -25,35 +27,40 @@ struct MemoryGame<CardContent>  where CardContent: Equatable{
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
                 }
-                indexOfTheOneAndOnlyFaceupCard = nil
+                cards[chosenIndex].isFaceup = true
             } else {
-                for index in cards.indices {
-                    cards[index].isFaceup = false
-                }
                 indexOfTheOneAndOnlyFaceupCard = chosenIndex
             }
-            
-            cards[chosenIndex].isFaceup.toggle()
         }
+        
         print("card choosen: \(cards)")
     }
     
     struct Card: Identifiable{
-        var id: Int
-        
-        var isFaceup: Bool = false
-        var isMatched: Bool = false
-        var content: CardContent
+        var isFaceup  = false
+        var isMatched = false
+        let content: CardContent
+        let id: Int
     }
     
     init(numberOfPairsOfCards:Int, cardContentFactory:(Int)->CardContent) {
-        cards = Array<Card>()
+        cards = []
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = cardContentFactory(pairIndex)
-            cards.append(Card(id: pairIndex*2,  content: content))
-            cards.append(Card(id: pairIndex*2 + 1, content: content))
+            cards.append(Card(content: content, id: pairIndex*2))
+            cards.append(Card(content: content, id: pairIndex*2 + 1))
         }
     }
     
     
+}
+
+extension Array {
+    var oneAndOnly:Element? {
+        if count == 1 {
+            return first
+        } else {
+            return nil
+        }
+    }
 }

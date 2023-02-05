@@ -2,25 +2,25 @@
 import SwiftUI
 
 
-struct ContentView: View {
+struct EmojiMemoryGameView: View {
     
-    @ObservedObject var viewModel: EmojiMemoryGame
+    @ObservedObject var game: EmojiMemoryGame
     
     var body: some View {
         
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))]) {
-                ForEach(viewModel.cards) {card in
+                ForEach(game.cards) {card in
                     CardView(card: card)
                         .aspectRatio(2/3, contentMode: .fit)
                         .onTapGesture {
-                            viewModel.choose(card)
+                            game.choose(card)
                         }
                 }
             }
         }
         
-        .foregroundColor(.red)
+        .foregroundColor(.orange)
         .padding()
         .font(Font.largeTitle)
     }
@@ -29,7 +29,7 @@ struct ContentView: View {
 
 struct CardView: View {
     
-    let card: MemoryGame<String>.Card
+    let card: EmojiMemoryGame.Card
     
     var body: some View {
         ZStack {
@@ -55,9 +55,9 @@ struct ContentView_Previews: PreviewProvider {
         
         let game = EmojiMemoryGame()
         
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.dark)
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
         
     }
 }
