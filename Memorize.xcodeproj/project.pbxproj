@@ -16,6 +16,7 @@
 		230D427B298A0C6C00795F21 /* MemorizeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230D427A298A0C6C00795F21 /* MemorizeUITestsLaunchTests.swift */; };
 		232F31B1298A63C60030C6C1 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F31B0298A63C60030C6C1 /* MemoryGame.swift */; };
 		232F31B3298A66ED0030C6C1 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232F31B2298A66ED0030C6C1 /* EmojiMemoryGame.swift */; };
+		2348DB4E29909CEC00E6ED69 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2348DB4D29909CEC00E6ED69 /* AspectVGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		230D427A298A0C6C00795F21 /* MemorizeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		232F31B0298A63C60030C6C1 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		232F31B2298A66ED0030C6C1 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
+		2348DB4D29909CEC00E6ED69 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				230D425D298A0C6A00795F21 /* MemorizeApp.swift */,
 				230D425F298A0C6A00795F21 /* EmojiMemoryGameView.swift */,
+				2348DB4D29909CEC00E6ED69 /* AspectVGrid.swift */,
 				232F31B0298A63C60030C6C1 /* MemoryGame.swift */,
 				232F31B2298A66ED0030C6C1 /* EmojiMemoryGame.swift */,
 				230D4261298A0C6C00795F21 /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 				230D4260298A0C6A00795F21 /* EmojiMemoryGameView.swift in Sources */,
 				232F31B3298A66ED0030C6C1 /* EmojiMemoryGame.swift in Sources */,
 				230D425E298A0C6A00795F21 /* MemorizeApp.swift in Sources */,
+				2348DB4E29909CEC00E6ED69 /* AspectVGrid.swift in Sources */,
 				232F31B1298A63C60030C6C1 /* MemoryGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
